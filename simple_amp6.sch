@@ -75,7 +75,7 @@ plot v(VOUT) deriv(v(VOUT))
 plot i(Vmeas) 
 plot deriv(v(VOUT))
 tran 10ns 20u
-plot (v(VOUT)-1.01377) (v(VIN)-2)
+plot (v(VOUT)-1.14755) (v(VIN)-2)
 plot fft((v(VOUT))) fft((v(VIN)))
 ac dec 20 1 50G
 plot v(VOUT)
