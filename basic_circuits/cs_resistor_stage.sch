@@ -5,6 +5,15 @@ K {}
 V {}
 S {}
 E {}
+T {Basic CS stage amplifier.
+It serves as a gain stage because the output impedance is small.
+It can be tested by increasing the load resistor.
+The load resistor is set as almost infinite impedance.
+The first is to obtain the dc characteristics.
+It serves the purpose of testing this tecnology capabilities. 
+The gain is directly dependent on gm1 and R1. by increasing gm1 we can extend the gain voltage range
+The first is to obtain the dc characteristics.
+the second is to show it working as an amplifier with the blocking capacitors and the bias voltage} 810 -210 0 0 0.4 0.4 {}
 N 430 -250 430 -220 {
 lab=VOUT}
 N 430 -340 430 -310 {
@@ -69,11 +78,20 @@ N 690 130 730 130 {
 lab=VOUTT}
 C {devices/code.sym} 10 -160 0 0 {name=spice only_toplevel=false
 format="tcleval( @value )"
-value="
-
-
+value="	
+**************************************************************
+**************************************************************
+**************************************************************
+**************************************************************
+**************************************************************
+*LIBs*********************************************************
+**************************************************************
+**************************************************************
+**************************************************************
+**************************************************************
+**************************************************************
 .include $::180MCU_MODELS/design.ngspice
-*.lib $::180MCU_MODELS/sm141064.ngspice statistical
+*.lib $::180MCU_MODELS/sm141064.ngspice statistical *use statistical if you want global and parameter mismatch
 *.lib $::180MCU_MODELS/sm141064.ngspice res_statistical
 .lib $::180MCU_MODELS/sm141064.ngspice typical
 .lib $::180MCU_MODELS/sm141064.ngspice res_typical
@@ -81,38 +99,54 @@ value="
 .lib $::180MCU_MODELS/sm141064.ngspice bjt_typical
 .lib $::180MCU_MODELS/sm141064.ngspice diode_typical
 .lib $::180MCU_MODELS/sm141064.ngspice mimcap_typical
+**************************************************************
+**************************************************************
+**************************************************************
+**************************************************************
+**************************************************************
+*Corners/montecarlo options***********************************
+**************************************************************
+**************************************************************
+**************************************************************
+**************************************************************
+**************************************************************
 .TEMP 27
-
 .param
 +  sw_stat_global = 1
 +  sw_stat_mism = 1
 + mc_skew = 3
 + res_mc_skew = 3
 + cap_mc_skew = 3
-+ fnoicor = 1  
-
-
-
-
-
-
-
-
-
++ fnoicor = 1
+**************************************************************
+**************************************************************
+**************************************************************
+**************************************************************  
+*SIMULATION and Plots*****************************************
+**************************************************************
+**************************************************************
+**************************************************************
+**************************************************************
 .control
 save all
-dc V2 0 3.3 0.01
-plot v(VOUT) v(VIN) deriv(v(VOUT))
+dc V2 0 3.3 0.01 
+*dc simulation
+plot v(VOUT) v(VIN) deriv(v(VOUT))  
+*ploting VIN VOUT and the voltage gain
 plot i(Vmeas) 
-plot deriv(v(VOUT))
-tran 10ns 20u
-plot (v(VINT)) (v(VOUTT))
-fft v(VOUTT) v(VINT)
-plot mag(v(VOUTT)) mag(v(VINT))
-
-
-ac dec 20 1 50G
-plot v(VOUTT)
+*ploting the current for curiosity
+tran 1ns 20u 
+*transient simulation
+plot (v(VINT)) (v(VOUTT)) 
+*simple plot to exemplify the gain
+fft v(VOUTT) v(VINT) 
+*fast fourier transfor
+plot mag(v(VOUTT)) mag(v(VINT)) 
+* analyse the frequency spectrum of the transient waves, to detect distortion
+ac dec 20 1 50G 
+*simple ac simulation
+plot v(VOUTT) 
+*gain in function of the input frequency
 .endc
 "}
 C {symbols/nfet_03v3.sym} 410 -190 0 0 {name=M1
@@ -135,14 +169,14 @@ C {devices/gnd.sym} 430 -110 0 0 {name=l1 lab=GND}
 C {devices/gnd.sym} 500 -190 0 0 {name=l2 lab=GND}
 C {devices/vsource.sym} 100 -380 0 0 {name=V1 value=3.3
 }
-C {devices/vsource.sym} 180 -380 0 0 {name=V2 value=1.155}
+C {devices/vsource.sym} 180 -380 0 0 {name=V2 value=1.1155}
 C {devices/gnd.sym} 100 -330 0 0 {name=l3 lab=GND}
 C {devices/lab_pin.sym} 430 -430 0 0 {name=p2 sig_type=std_logic lab=VDD}
 C {devices/gnd.sym} 250 300 0 0 {name=l4 lab=GND}
 C {devices/lab_pin.sym} 180 -440 0 0 {name=p3 sig_type=std_logic lab=VIN
 }
 C {devices/lab_pin.sym} 690 -230 2 0 {name=p5 sig_type=std_logic lab=VOUT}
-C {devices/vsource.sym} 250 240 0 0 {name=V3 value="ac 1.0 sin (0 10m 100k)"}
+C {devices/vsource.sym} 250 240 0 0 {name=V3 value="ac 1.0 sin (0 1m 100k)"}
 C {devices/res.sym} 430 -280 0 0 {name=R1
 value=1k
 footprint=1206
