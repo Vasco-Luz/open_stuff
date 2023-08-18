@@ -10,7 +10,7 @@ It serves as a gain stage because the output impedance is small.
 It can be tested by increasing the load resistor.
 The load resistor is set as almost infinite impedance.
 The first is to obtain the dc characteristics.
-It serves the purpose of testing this tecnology capabilities. 
+It serves the purpose of testing this technology capabilities. 
 The gain is directly dependent on gm1 and R02(mantain L2 high and gm2 realative low)
 by increasing gm1 we can extend the gain voltage range
 The first is to obtain the dc characteristics.
