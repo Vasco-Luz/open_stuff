@@ -5,7 +5,7 @@ K {}
 V {}
 S {}
 E {}
-T {Basic CS stage amplifier.
+T {Basic CS stage amplifier. with an diode connected NMOS to serve as an Resistor
 It serves as a gain stage because the output impedance is small.
 It can be tested by increasing the load resistor.
 The load resistor is set as almost infinite impedance.
