@@ -7,8 +7,8 @@ S {}
 E {}
 T {A common source with a current, and a pararel resistance to increase the overall gain.
 the PMOS start in the triode region, and as VOUT decreases, it enters in the saturation region.
-when the current depends too mutch on R2, the gain increases with the increase of W2, then the gain depends too mutch on M2 the gain increases with the increase of L2
-
+when the current depends too mutch on R2, the gain increases with the increase of W2, When the gain depends too mutch on M2 the gain increases with the increase of L2 and decrease of W2
+Gain always increases with GM1
 } 500 -180 0 0 0.4 0.4 {}
 N -100 -350 -100 -330 {
 lab=GND}
