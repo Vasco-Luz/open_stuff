@@ -5,16 +5,14 @@ K {}
 V {}
 S {}
 E {}
-T {Basic CS stage amplifier. with an diode connected NMOS to serve as an Resistor
-It serves as a gain stage because the output impedance is small.
-It can be tested by increasing the load resistor.
-The load resistor is set as almost infinite impedance.
-The first is to obtain the dc characteristics.
-It serves the purpose of testing this technology capabilities. 
-The gain is directly dependent on gm1 and R02(mantain L2 high and gm2 realative low), but increasing r02 too much caused ID to drop and keep the saturated region smaller
-by increasing gm1 we can extend the gain voltage range
-The first is to obtain the dc characteristics.
-the second is to show it working as an amplifier with the blocking capacitors and the bias voltage} 810 -210 0 0 0.4 0.4 {}
+T {Basic CS with an "current source" stage amplifier.
+The "current source" is a saturated transistor. the logic behind it is that in a perfect world with perfect current sources
+the gain would only depend on the intrisic gain of the input mos. but in reality there are no perfect current sources.
+The saturated transistor forces an somewhat constant current through the input transistor. with the change of gm1 transtor
+since the current must be the same VDS changes in a quadratic way(not quadratic because of second order effects) obtaining a very large gain
+the gain is directly dependent on gm of the input transistor and diretly dependent on r0 of the current source(channel modulation of the current source)(ro increases with L)
+The blocking output capacitor was removed to resolve the transient simolations problems
+} 810 -210 0 0 0.4 0.4 {}
 N 430 -250 430 -220 {
 lab=VOUT}
 N 430 -400 430 -370 {
@@ -205,11 +203,6 @@ C {devices/vsource.sym} 250 240 0 0 {name=V3 value="ac 1.0 sin (0 10m 1k)"}
 C {devices/lab_pin.sym} 340 -190 0 0 {name=p4 sig_type=std_logic lab=VIN
 }
 C {devices/gnd.sym} 180 -310 0 0 {name=l5 lab=GND}
-C {devices/capa.sym} 330 190 3 0 {name=C1
-m=1
-value=1000m
-footprint=1206
-device="ceramic capacitor"}
 C {devices/lab_pin.sym} 420 30 0 0 {name=p6 sig_type=std_logic lab=VIN
 }
 C {devices/res.sym} 420 80 0 0 {name=R3
@@ -284,3 +277,8 @@ footprint=1206
 device=resistor
 m=1}
 C {devices/gnd.sym} 690 -170 0 0 {name=l6 lab=GND}
+C {devices/capa.sym} 330 190 3 0 {name=C1
+m=1
+value=1
+footprint=1206
+device="ceramic capacitor"}

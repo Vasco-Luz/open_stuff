@@ -5,16 +5,16 @@ K {}
 V {}
 S {}
 E {}
-T {Basic CS stage amplifier. with an diode connected NMOS to serve as an Resistor
-It serves as a gain stage because the output impedance is small.
-It can be tested by increasing the load resistor.
-The load resistor is set as almost infinite impedance.
-The first is to obtain the dc characteristics.
-It serves the purpose of testing this technology capabilities. 
-The gain is directly dependent on gm1 and R02(mantain L2 high and gm2 realative low)
-by increasing gm1 we can extend the gain voltage range
-The first is to obtain the dc characteristics.
-the second is to show it working as an amplifier with the blocking capacitors and the bias voltage} 810 -210 0 0 0.4 0.4 {}
+T {Basic CS with an diode conneted load amplifier stage
+It serves as a gain stage. the use of an diode conected mos serves to add an "varying resistance" dependent on the inverse gm to try to make
+the variation more linear. the body effect is beneficial to make the gain more linear. this can be done with an PMOS, and it makes more sense to put an PMOS
+because the gm of a PMOS is smaller then of the PMOS
+a Diode conected mos always stays in saturation but it cannot be used as an current source
+The gain directly dependent on gm of the input mos and the inverse dependent on the gm of the diode conected mos
+
+
+
+} 810 -210 0 0 0.4 0.4 {}
 N 430 -250 430 -220 {
 lab=VOUT}
 N 430 -400 430 -370 {
