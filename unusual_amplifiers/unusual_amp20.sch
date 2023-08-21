@@ -109,7 +109,7 @@ lab=GND}
 N 370 300 370 350 {
 lab=#net3}
 N 370 410 370 520 {
-lab=VA}
+lab=#net5}
 N 320 380 330 380 {
 lab=#net1}
 N 310 270 330 270 {
@@ -340,8 +340,6 @@ model=pfet_06v0
 spiceprefix=X
 }
 C {devices/lab_pin.sym} 420 270 0 1 {name=p18 sig_type=std_logic lab=VDD}
-C {devices/lab_pin.sym} 370 450 0 0 {name=p19 sig_type=std_logic lab=VA
-}
 C {devices/gnd.sym} 370 610 0 0 {name=l13 lab=GND}
 C {symbols/nfet_06v0.sym} 350 380 0 0 {name=M6
 L=0.7u
