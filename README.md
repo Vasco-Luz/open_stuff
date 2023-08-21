@@ -5,9 +5,11 @@ You need xschem installed and the open PDKS and ngspice, this only works in linu
 
 xschem: https://github.com/StefanSchippers/xschem install in this repository
 
-Open PDKS:  https://github.com/efabless/volare.git Define PDK root
+Open PDKS:  https://github.com/efabless/volare.git Define PDK_ROOT in bashrc for the instalaion location of the PDK
+
 ngspice: https://ngspice.sourceforge.io/ download and install the latest version,
 
-then copy the xschmerc file in the description to the: /usr/local/share/xschem use mine xschmerc file. not the one inside the PDK.
+then copy the xschemrc file in the description to the: /usr/local/share/xschem use mine xschmerc file only for gf180mcuC tecnology, for sky130 the xschemrc file wprk well. not the one inside the PDK.
+install xterm xterms "links" ngspice to xschem
 
 open the file with "xschem [filename]" and simulate
