@@ -119,6 +119,108 @@ N 380 560 390 560 {
 lab=#net6}
 N 390 560 390 570 {
 lab=#net6}
+N 220 1140 260 1140 {
+lab=VOUT_A+}
+N 220 1200 220 1220 {
+lab=GND}
+N 180 1140 220 1140 {
+lab=VOUT_A+}
+N 90 1140 120 1140 {
+lab=VOUT_A+}
+N -10 1060 -10 1140 {
+lab=#net7}
+N -10 980 -10 1000 {
+lab=VIN}
+N 40 1090 40 1110 {
+lab=#net8}
+N 40 1170 40 1190 {
+lab=GND}
+N 40 980 40 1090 {
+lab=#net8}
+N 790 1180 830 1180 {
+lab=VOUT_A+_post}
+N 790 1240 790 1260 {
+lab=GND}
+N 750 1180 790 1180 {
+lab=VOUT_A+_post}
+N 660 1180 690 1180 {
+lab=VOUT_A+_post}
+N 560 1100 560 1180 {
+lab=#net9}
+N 560 1020 560 1040 {
+lab=#net10}
+N 610 1130 610 1150 {
+lab=#net11}
+N 610 1210 610 1230 {
+lab=GND}
+N 470 1010 550 1010 {
+lab=#net10}
+N 550 1010 560 1010 {
+lab=#net10}
+N 560 1010 560 1020 {
+lab=#net10}
+N 610 1110 610 1130 {
+lab=#net11}
+N 610 1000 610 1110 {
+lab=#net11}
+N 690 1180 750 1180 {
+lab=VOUT_A+_post}
+N 120 1140 180 1140 {
+lab=VOUT_A+}
+N 210 1570 250 1570 {
+lab=VOUT_A-}
+N 210 1630 210 1650 {
+lab=GND}
+N 170 1570 210 1570 {
+lab=VOUT_A-}
+N 80 1570 110 1570 {
+lab=VOUT_A-}
+N -20 1490 -20 1570 {
+lab=#net12}
+N -20 1410 -20 1430 {
+lab=VIN}
+N 30 1520 30 1540 {
+lab=VDD}
+N 30 1600 30 1620 {
+lab=#net13}
+N 30 1410 30 1520 {
+lab=VDD}
+N 780 1610 820 1610 {
+lab=VOUT_A-_post}
+N 780 1670 780 1690 {
+lab=GND}
+N 740 1610 780 1610 {
+lab=VOUT_A-_post}
+N 650 1610 680 1610 {
+lab=VOUT_A-_post}
+N 550 1530 550 1610 {
+lab=#net14}
+N 550 1450 550 1470 {
+lab=#net15}
+N 600 1560 600 1580 {
+lab=VDD}
+N 600 1640 600 1660 {
+lab=#net16}
+N 460 1440 540 1440 {
+lab=#net15}
+N 540 1440 550 1440 {
+lab=#net15}
+N 550 1440 550 1450 {
+lab=#net15}
+N 600 1540 600 1560 {
+lab=VDD}
+N 600 1430 600 1540 {
+lab=VDD}
+N 680 1610 740 1610 {
+lab=VOUT_A-_post}
+N 110 1570 170 1570 {
+lab=VOUT_A-}
+N 30 1350 30 1410 {
+lab=VDD}
+N 30 1680 30 1690 {
+lab=GND}
+N 600 1370 600 1430 {
+lab=VDD}
 C {devices/code.sym} 10 -160 0 0 {name=spice only_toplevel=false
 format="tcleval( @value )"
 value="	
@@ -180,6 +282,8 @@ plot mag(v(VOUTT)) mag(v(VINT)) mag(v(VOUTT_tran))
 ac dec 20 1 50G 
 *simple ac simulation
 plot v(VOUTT) v(VOUTT_tran)
+plot v(VOUT_A+) v(VOUT_A+_post)
+plot v(VOUT_A-) v(VOUT_A-_post)
 *gain in function of the input frequency
 .endc
 "}
@@ -297,3 +401,75 @@ C {/home/vasco/Desktop/sky130A/amp_tests/basic_stages/cs_resistor_stage/cs_resis
 C {devices/lab_pin.sym} 220 730 1 0 {name=p14 sig_type=std_logic lab=VINT
 }
 C {devices/gnd.sym} 300 620 0 0 {name=l11 lab=GND}
+C {devices/vsource.sym} 40 950 2 0 {name=V4 value="ac 1.0 sin (0 0u 100k)"}
+C {devices/lab_pin.sym} -10 980 0 0 {name=p16 sig_type=std_logic lab=VIN
+}
+C {devices/res.sym} -10 1030 0 0 {name=R8
+value=10M
+footprint=1206
+device=resistor
+m=1}
+C {devices/res.sym} 220 1170 0 0 {name=R9
+value=10G
+footprint=1206
+device=resistor
+m=1}
+C {devices/gnd.sym} 220 1220 0 0 {name=l15 lab=GND}
+C {devices/lab_pin.sym} 260 1140 2 0 {name=p18 sig_type=std_logic lab=VOUT_A+}
+C {/home/vasco/Desktop/sky130A/amp_tests/basic_stages/cs_resistor_stage/cs_resistor_stage.sym} 120 1140 0 0 {name=x4}
+C {devices/lab_pin.sym} 40 920 1 0 {name=p20 sig_type=std_logic lab=VDD}
+C {devices/gnd.sym} 40 1190 0 0 {name=l16 lab=GND}
+C {devices/res.sym} 560 1070 0 0 {name=R10
+value=10M
+footprint=1206
+device=resistor
+m=1}
+C {devices/res.sym} 790 1210 0 0 {name=R11
+value=10G
+footprint=1206
+device=resistor
+m=1}
+C {devices/gnd.sym} 790 1260 0 0 {name=l14 lab=GND}
+C {devices/lab_pin.sym} 830 1180 2 0 {name=p19 sig_type=std_logic lab=VOUT_A+_post}
+C {devices/gnd.sym} 610 1230 0 0 {name=l17 lab=GND}
+C {devices/vsource.sym} 470 1040 0 0 {name=V6 value=1.170}
+C {/home/vasco/Desktop/sky130A/amp_tests/basic_stages/cs_resistor_stage/cs_resistor_stage_post.sym} 690 1180 0 0 {name=x5}
+C {devices/gnd.sym} 470 1070 0 0 {name=l18 lab=GND}
+C {devices/vsource.sym} 610 970 2 0 {name=V7 value="ac 1.0 sin (0 0u 100k)"}
+C {devices/lab_pin.sym} 610 940 1 0 {name=p21 sig_type=std_logic lab=VDD}
+C {devices/vsource.sym} 30 1650 0 0 {name=V8 value="ac 1.0 sin (0 0u 100k)"}
+C {devices/lab_pin.sym} -20 1410 0 0 {name=p22 sig_type=std_logic lab=VIN
+}
+C {devices/res.sym} -20 1460 0 0 {name=R12
+value=10M
+footprint=1206
+device=resistor
+m=1}
+C {devices/res.sym} 210 1600 0 0 {name=R13
+value=10G
+footprint=1206
+device=resistor
+m=1}
+C {devices/gnd.sym} 210 1650 0 0 {name=l19 lab=GND}
+C {devices/lab_pin.sym} 250 1570 2 0 {name=p23 sig_type=std_logic lab=VOUT_A-}
+C {/home/vasco/Desktop/sky130A/amp_tests/basic_stages/cs_resistor_stage/cs_resistor_stage.sym} 110 1570 0 0 {name=x6}
+C {devices/lab_pin.sym} 30 1350 1 0 {name=p24 sig_type=std_logic lab=VDD}
+C {devices/gnd.sym} 30 1690 0 0 {name=l20 lab=GND}
+C {devices/res.sym} 550 1500 0 0 {name=R14
+value=10M
+footprint=1206
+device=resistor
+m=1}
+C {devices/res.sym} 780 1640 0 0 {name=R15
+value=10G
+footprint=1206
+device=resistor
+m=1}
+C {devices/gnd.sym} 780 1690 0 0 {name=l21 lab=GND}
+C {devices/lab_pin.sym} 820 1610 2 0 {name=p25 sig_type=std_logic lab=VOUT_A-_post}
+C {devices/gnd.sym} 600 1720 0 0 {name=l22 lab=GND}
+C {devices/vsource.sym} 460 1470 0 0 {name=V9 value=1.170}
+C {/home/vasco/Desktop/sky130A/amp_tests/basic_stages/cs_resistor_stage/cs_resistor_stage_post.sym} 680 1610 0 0 {name=x7}
+C {devices/gnd.sym} 460 1500 0 0 {name=l23 lab=GND}
+C {devices/vsource.sym} 600 1690 0 0 {name=V10 value="ac 1.0 sin (0 0u 100k)"}
+C {devices/lab_pin.sym} 600 1370 1 0 {name=p26 sig_type=std_logic lab=VDD}
