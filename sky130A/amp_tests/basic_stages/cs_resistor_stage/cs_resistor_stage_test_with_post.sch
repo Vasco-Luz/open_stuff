@@ -221,6 +221,14 @@ N 30 1680 30 1690 {
 lab=GND}
 N 600 1370 600 1430 {
 lab=VDD}
+N 560 1180 570 1180 {
+lab=#net9}
+N -10 1140 0 1140 {
+lab=#net7}
+N -20 1570 -10 1570 {
+lab=#net12}
+N 550 1610 560 1610 {
+lab=#net14}
 C {devices/code.sym} 10 -160 0 0 {name=spice only_toplevel=false
 format="tcleval( @value )"
 value="	
@@ -265,13 +273,13 @@ value="
 **************************************************************
 .control
 save all
-dc V2 0 3.3 0.01 
+dc V2 0 5 0.01 
 *dc simulation
 plot v(VOUT) v(VIN) deriv(v(VOUT)) v(VOUt_tran) deriv(v(VOUT_tran))
 *ploting VIN VOUT and the voltage gain
 plot i(Vmeas) 
 *ploting the current for curiosity
-tran 0.1ns 20u 
+tran 1ns 20u 
 *transient simulation
 plot (v(VINT)) (v(VOUTT)) v(VOUTT_tran)
 *simple plot to exemplify the gain
@@ -281,9 +289,9 @@ plot mag(v(VOUTT)) mag(v(VINT)) mag(v(VOUTT_tran))
 * analyse the frequency spectrum of the transient waves, to detect distortion
 ac dec 20 1 50G 
 *simple ac simulation
-plot v(VOUTT) v(VOUTT_tran)
-plot v(VOUT_A+) v(VOUT_A+_post)
-plot v(VOUT_A-) v(VOUT_A-_post)
+plot db(v(VOUTT)) db(v(VOUTT_tran))
+plot db(v(VOUT_A+)) db(v(VOUT_A+_post))
+plot db(v(VOUT_A-)) db(v(VOUT_A-_post))
 *gain in function of the input frequency
 .endc
 "}
